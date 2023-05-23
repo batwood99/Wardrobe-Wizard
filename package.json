@@ -1,0 +1,19 @@
+{
+  "name": "wardrobe-wizard",
+  "version": "1.0.0",
+  "description": "Simplifying Your Closet Management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/batwood99/Wardrobe-Wizard.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/batwood99/Wardrobe-Wizard/issues"
+  },
+  "homepage": "https://github.com/batwood99/Wardrobe-Wizard#readme"
+}
