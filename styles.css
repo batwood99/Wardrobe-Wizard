@@ -1,0 +1,23 @@
+ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 10px 16px;
+    margin: 2px;
+}
+
+ul li a{
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #040000;
+}
+
+ul img:hover{
+    background-color: blue;
+   
+}
+
+ul img{
+    width: 150px;
+    height: 200px;
+}
