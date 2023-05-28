@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <defs>
+            <path id="shape" d="M6,2 h8 v-6 h-8 v6 z" />
+        </defs>
+
+        <rect x="48" y="40" width="2.5" height="25" fill="#000" />
+        <rect x="48" y="38" width="2.5" height="5" fill="#FFF" />
+        <rect x="48" y="62" width="2.5" height="5" fill="#FFF" />
+
+
+        <g transform="translate(15 15)">
+            <g transform="rotate(22.5 35 35)">
+                <use href="#shape" fill="#FACD64">
+                    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20"
+                        to="360 35 35" dur="4s" repeatCount="indefinite" />
+                </use>
+                <g>
+                    <g transform="rotate(22.5 35 35)">
+                        <use href="#shape" fill="#FACD64">
+                            <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20"
+                                to="360 35 35" dur="4s" repeatCount="indefinite" />
+                        </use>
+                    </g>
+                    <g transform="rotate(67.5 35 35)">
+                        <use href="#shape" fill="#86C5DA">
+                            <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20"
+                                to="360 35 35" dur="4s" repeatCount="indefinite" />
+                        </use>
+                    </g>
+                    <g transform="rotate(112.5 35 35)">
+                        <use href="#shape" fill="#FF69B4">
+                            <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20"
+                                to="360 35 35" dur="4s" repeatCount="indefinite" />
+                        </use>
+                    </g>
+                    <g transform="rotate(157.5 35 35)">
+                        <use href="#shape" fill="#82D8BF">
+                            <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20"
+                                to="360 35 35" dur="4s" repeatCount="indefinite" />
+                        </use>
+                    </g>
+                    <g transform="rotate(202.5 35 35)">
+                        <use href="#shape" fill="#FFD700">
+                            <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20"
+                                to="360 35 35" dur="4s" repeatCount="indefinite" />
+                        </use>
+                    </g>
+                    <g transform="rotate(247.5 35 35)">
+                        <use href="#shape" fill="#EE82EE">
+                            <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20"
+                                to="360 35 35" dur="4s" repeatCount="indefinite" />
+                        </use>
+                    </g>
+                    <g transform="rotate(292.5 35 35)">
+                        <use href="#shape" fill="#FFA500">
+                            <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20"
+                                to="360 35 35" dur="4s" repeatCount="indefinite" />
+                        </use>
+                    </g>
+                    <g transform="rotate(337.5 35 35)">
+                        <use href="#shape" fill="#6495ED">
+                            <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20"
+                                to="360 35 35" dur="4s" repeatCount="indefinite" />
+                        </use>
+                    </g>
+                    <g>
+                        <g transform="rotate(22.5 35 35)">
+                            <use href="#shape" fill="#FACD64">
+                                <animateTransform attributeName="transform" attributeType="XML" type="rotate"
+                                    from="0 20 20" to="360 35 35" dur="4s" repeatCount="indefinite" />
+                            </use>
+                        </g>
+                        <g transform="rotate(67.5 35 35)">
+                            <use href="#shape" fill="#86C5DA">
+                                <animateTransform attributeName="transform" attributeType="XML" type="rotate"
+                                    from="0 20 20" to="360 35 35" dur="4s" repeatCount="indefinite" />
+                            </use>
+                        </g>
+                        <g transform="rotate(112.5 35 35)">
+                            <use href="#shape" fill="#FF69B4">
+                                <animateTransform attributeName="transform" attributeType="XML" type="rotate"
+                                    from="0 20 20" to="360 35 35" dur="4s" repeatCount="indefinite" />
+                            </use>
+                        </g>
+                        <g transform="rotate(157.5 35 35)">
+                            <use href="#shape" fill="#82D8BF">
+                                <animateTransform attributeName="transform" attributeType="XML" type="rotate"
+                                    from="0 20 20" to="360 35 35" dur="4s" repeatCount="indefinite" />
+                            </use>
+                        </g>
+                        <g transform="rotate(202.5 35 35)">
+                            <use href="#shape" fill="#FFD700">
+                                <animateTransform attributeName="transform" attributeType="XML" type="rotate"
+                                    from="0 20 20" to="360 35 35" dur="4s" repeatCount="indefinite" />
+                            </use>
+                        </g>
+                        <g transform="rotate(247.5 35 35)">
+                            <use href="#shape" fill="#EE82EE">
+                                <animateTransform attributeName="transform" attributeType="XML" type="rotate"
+                                    from="0 20 20" to="360 35 35" dur="4s" repeatCount="indefinite" />
+                            </use>
+                        </g>
+                        <g transform="rotate(292.5 35 35)">
+                            <use href="#shape" fill="#FFA500">
+                                <animateTransform attributeName="transform" attributeType="XML" type="rotate"
+                                    from="0 20 20" to="360 35 35" dur="4s" repeatCount="indefinite" />
+                            </use>
+                        </g>
+                        <g transform="rotate(337.5 35 35)">
+                            <use href="#shape" fill="#6495ED">
+                                <animateTransform attributeName="transform" attributeType="XML" type="rotate"
+                                    from="0 20 20" to="360 35 35" dur="4s" repeatCount="indefinite" />
+                            </use>
+                        </g>
+
+                    </g>
+                </g>
+            </g>
+            <g transform="rotate(67.5 35 35)">
+                <use href="#shape" fill="#86C5DA">
+                    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20"
+                        to="360 35 35" dur="4s" repeatCount="indefinite" />
+                </use>
+            </g>
+            <g transform="rotate(112.5 35 35)">
+                <use href="#shape" fill="#FF69B4">
+                    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20"
+                        to="360 35 35" dur="4s" repeatCount="indefinite" />
+                </use>
+            </g>
+            <g transform="rotate(157.5 35 35)">
+                <use href="#shape" fill="#82D8BF">
+                    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20"
+                        to="360 35 35" dur="4s" repeatCount="indefinite" />
+                </use>
+            </g>
+            <g transform="rotate(202.5 35 35)">
+                <use href="#shape" fill="#FFD700">
+                    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20"
+                        to="360 35 35" dur="4s" repeatCount="indefinite" />
+                </use>
+            </g>
+            <g transform="rotate(247.5 35 35)">
+                <use href="#shape" fill="#EE82EE">
+                    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20"
+                        to="360 35 35" dur="4s" repeatCount="indefinite" />
+                </use>
+            </g>
+            <g transform="rotate(292.5 35 35)">
+                <use href="#shape" fill="#FFA500">
+                    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20"
+                        to="360 35 35" dur="4s" repeatCount="indefinite" />
+                </use>
+            </g>
+            <g transform="rotate(337.5 35 35)">
+                <use href="#shape" fill="#6495ED">
+                    <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20"
+                        to="360 35 35" dur="4s" repeatCount="indefinite" />
+                </use>
+            </g>
+        </g>
+    </svg>
