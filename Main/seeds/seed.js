@@ -1,6 +1,7 @@
 const sequelize = require('../config/connection');
 const User = require('../models/User');
 const Clothing = require('../models/Clothing');
+const clothingData = require('./clothingData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -14,11 +15,7 @@ const seedDatabase = async () => {
     });
 
     // Create some clothing items for the user
-    await Clothing.bulkCreate([
-      { name: 'Blue T-Shirt', category: 'Tops', subCategory: 'Shirts', userId: user.id },
-      { name: 'Black Jeans', category: 'Bottoms', subCategory: 'Pants', userId: user.id },
-      { name: 'Running Shoes', category: 'Shoes', subCategory: 'Shoes', userId: user.id },
-    ]);
+    await Clothing.bulkCreate(clothingData.map(data => ({ ...data, userId: user.id })));
 
     console.log('Database seeded successfully.');
   } catch (err) {
