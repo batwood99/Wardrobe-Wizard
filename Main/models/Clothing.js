@@ -77,7 +77,6 @@ const Pants = sequelize.define('Pants', {
         type: DataTypes.STRING,
         allowNull: false
     },
-
     clothing_type_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -92,6 +91,37 @@ const Pants = sequelize.define('Pants', {
     freezeTableName: true,
     underscored: true,
     modelName: 'pants',
+});
+
+const footWear = sequelize.define('FootWear', {
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    color: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    clothing_type_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'clothing_type',
+            key: 'id'
+        }
+    }
+}, {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'foot_wear',
 });
 
 
