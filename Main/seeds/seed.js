@@ -1,5 +1,6 @@
-const { ClothingType, Shirt, Pants, Outfit } = require('../models');
+const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+
 
 //This line seedDataBase is a function that will be called in the server.js file and will seed the database with the data from the seed.json file
 const seedDataBase = async () => {
@@ -39,6 +40,7 @@ const seedDataBase = async () => {
     process.exit(0);
 };
 seedDataBase();
+test
 
 
     
