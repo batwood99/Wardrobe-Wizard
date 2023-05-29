@@ -1,13 +1,10 @@
 const express = require('express');
 const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
+
 
 const app = express();
 
-const sequelize = new Sequelize('clothing_db', 'root', 'password', {
-    host: 'localhost',
-    dialect: 'mysql',
-    port: 3306
-});
 
 const ClothingType = sequelize.define('ClothingType', {
     // Model attributes are defined here
@@ -124,6 +121,4 @@ const footWear = sequelize.define('FootWear', {
     modelName: 'foot_wear',
 });
 
-
-
-
+module.exports = { ClothingType, Shirt, Pants, footWear };
