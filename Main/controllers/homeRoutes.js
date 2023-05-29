@@ -3,22 +3,32 @@ const router = express.Router();
 const withAuth = require('../utils/auth');
 const Clothing = require('../models/Clothing');
 
-// Home route
-router.get('/', async (req, res) => {
+// Landing route
+router.get('/landing', withAuth, async (req, res) => {
   try {
-    // Fetch all clothing items from the database
-    const clothingItems = await Clothing.findAll();
+    // Fetch the user's clothing items from the database
+    const clothes = await Clothing.findAll({ where: { userId: req.session.user_id } });
 
-    res.render('index', { title: 'Home', clothingItems });
+    // Render the landing page and pass the clothing items as data
+    res.render('landing', { title: 'Landing', clothes });
   } catch (err) {
-    console.error('Error retrieving clothing items:', err);
-    res.status(500).json({ error: 'Failed to retrieve clothing items' });
+    console.error('Error fetching clothing items:', err);
+    res.status(500).json({ error: 'Failed to fetch clothing items' });
   }
 });
 
-// About route
-router.get('/about', withAuth, (req, res) => {
-  res.render('about', { title: 'About' });
+// Wardrobe route
+router.get('/wardrobe', withAuth, async (req, res) => {
+  try {
+    // Fetch the user's clothing items from the database
+    const clothes = await Clothing.findAll({ where: { userId: req.session.user_id } });
+
+    // Render the wardrobe page and pass the clothing items as data
+    res.render('wardrobe', { title: 'Wardrobe', clothes });
+  } catch (err) {
+    console.error('Error fetching clothing items:', err);
+    res.status(500).json({ error: 'Failed to fetch clothing items' });
+  }
 });
 
 module.exports = router;

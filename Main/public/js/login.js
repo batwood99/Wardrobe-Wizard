@@ -14,10 +14,10 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      // If successful, redirect the browser to the profile page
-      document.location.replace('/profile');
+      // If successful, redirect the browser to the landing page
+      document.location.replace('/landing');
     } else {
-      alert(response.statusText);
+      alert('Failed to log in. Please check your credentials and try again.');
     }
   }
 };
@@ -37,17 +37,13 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+      // If successful, redirect the browser to the landing page
+      document.location.replace('/landing');
     } else {
-      alert(response.statusText);
+      alert('Failed to sign up. Please try again.');
     }
   }
 };
 
-document
-  .querySelector('.login-form')
-  .addEventListener('submit', loginFormHandler);
-
-document
-  .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);
+document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
