@@ -1,0 +1,21 @@
+.navbar {
+    background-color: #878ECD;
+    padding: 20px;
+    justify-content: left;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+.login-form {
+    width: 95vw;
+    margin: auto;
+}
+.btn {
+    background-color: #878ECD;
+    color: #fff;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    height: 45px;
+}
+.landing-page {
+    padding: 10px;
+}
