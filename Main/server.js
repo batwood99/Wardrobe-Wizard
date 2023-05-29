@@ -3,7 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
-const wardrobeRoutes = require('./controllers/wardrobeRoutes'); // Add this line
+const wardrobeRoutes = require('./controllers/wardrobeRoutes');
 const helpers = require('./utils/helpers');
 
 const sequelize = require('./config/connection');
@@ -13,7 +13,11 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({
+  helpers,
+  defaultLayout: 'index', // Specify the default layout file as 'index.handlebars'
+  layoutsDir: path.join(__dirname, 'views') // Set the layouts directory to 'Main/views'
+});
 
 const sess = {
   secret: 'Super secret secret',
@@ -41,7 +45,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
-app.use(wardrobeRoutes); // Add this line
+app.use(wardrobeRoutes);
+
+// Set the default route to render index.handlebars
+app.get('/', (req, res) => {
+  res.render('index');
+});
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
