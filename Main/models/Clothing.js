@@ -30,6 +30,38 @@ const ClothingType = sequelize.define('ClothingType', {
 });
 
 
+const Shirt = sequelize.define('Shirt', {
+    // Model attributes are defined here
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    color: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+
+    clothing_type_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'clothing_type',
+            key: 'id'
+        }
+    }
+}, {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'shirt',
+});
 
 
 
