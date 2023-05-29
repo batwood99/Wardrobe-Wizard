@@ -1,7 +1,7 @@
 // Import necessary dependencies
 const express = require('express');
 const router = express.Router();
-const Clothing = require('../../models/Clothing');
+const Clothing = require('../models/Clothing');
 
 // Define the routes for clothing items
 router.get('/clothing', async (req, res) => {
