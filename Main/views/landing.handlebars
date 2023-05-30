@@ -42,6 +42,9 @@
       <li>{{this.name}}</li>
       {{/each}}
     </ul>
+    <form action="/reset-timer" method="POST">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
     {{else}}
     <p>No clothing items found in your closet.</p>
     {{/if}}

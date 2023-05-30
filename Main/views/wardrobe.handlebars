@@ -34,7 +34,14 @@
     {{#if clothingItems}}
     <ul>
       {{#each clothingItems}}
-      <li>{{this.name}}</li>
+      <li>
+        {{this.name}}
+        {{#if this.last_worn}}
+          <span class="last-worn">Last worn: {{this.last_worn}}</span>
+        {{else}}
+          <span class="last-worn">Not worn yet</span>
+        {{/if}}
+      </li>
       {{/each}}
     </ul>
     {{else}}

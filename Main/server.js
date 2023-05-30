@@ -8,6 +8,7 @@ const homeRoutes = require('./controllers/homeRoutes');
 const userRoutes = require('./controllers/api/userRoutes');
 const wardrobeRoutes = require('./controllers/wardrobeRoutes');
 const helpers = require('./utils/helpers');
+const { Clothing } = require('./models');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -58,6 +59,20 @@ app.use(routes); // Use the routes defined in the 'controllers' module
 // Set the default route to render index.handlebars
 app.get('/', (req, res) => {
   res.render('index', { title: 'Wardrobe Wizard' }); // Pass the 'title' value to index.handlebars
+});
+
+// Handle the '/reset-timer' endpoint
+app.post('/reset-timer', async (req, res) => {
+  try {
+    // Reset the 'last_worn' field to the current date/time for all clothing items
+    await Clothing.update({ last_worn: new Date() }, { where: {} });
+
+    // Redirect the user back to the landing page
+    res.redirect('/landing');
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 sequelize.sync({ force: false }).then(() => {
