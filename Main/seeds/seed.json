@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Shirt",
+    "color": "Red",
+    "clothing_type_id": 1,
+    "last_worn": null
+  },
+  {
+    "name": "Shirt",
+    "color": "Blue",
+    "clothing_type_id": 1,
+    "last_worn": null
+  },
+  {
+    "name": "Shirt",
+    "color": "Green",
+    "clothing_type_id": 1,
+    "last_worn": null
+  },
+  {
+    "name": "Shirt",
+    "color": "Yellow",
+    "clothing_type_id": 1,
+    "last_worn": null
+  },
+  {
+    "name": "Shirt",
+    "color": "Orange",
+    "clothing_type_id": 1,
+    "last_worn": null
+  },
+  {
+    "name": "Jeans",
+    "color": "Blue",
+    "clothing_type_id": 2,
+    "last_worn": null
+  },
+  {
+    "name": "Jeans",
+    "color": "Black",
+    "clothing_type_id": 2,
+    "last_worn": null
+  },
+  {
+    "name": "Dress Pants",
+    "color": "Grey",
+    "clothing_type_id": 2,
+    "last_worn": null
+  },
+  {
+    "name": "Slacks",
+    "color": "White",
+    "clothing_type_id": 2,
+    "last_worn": null
+  },
+  {
+    "name": "Shorts",
+    "color": "Blue",
+    "clothing_type_id": 2,
+    "last_worn": null
+  },
+  {
+    "name": "Sneakers",
+    "color": "White",
+    "clothing_type_id": 3,
+    "last_worn": null
+  },
+  {
+    "name": "Slippers",
+    "color": "Black",
+    "clothing_type_id": 3,
+    "last_worn": null
+  },
+  {
+    "name": "Loafers",
+    "color": "Red",
+    "clothing_type_id": 3,
+    "last_worn": null
+  },
+  {
+    "name": "Boots",
+    "color": "Brown",
+    "clothing_type_id": 3,
+    "last_worn": null
+  },
+  {
+    "name": "Sandals",
+    "color": "Blue",
+    "clothing_type_id": 3,
+    "last_worn": null
+  }
+]
