@@ -1,39 +1,124 @@
-// Import necessary dependencies
-const Sequelize = require('sequelize');
+const express = require('express');
+const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// Define the Clothing model
-const Clothing = sequelize.define('clothing', {
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  category: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  subCategory: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
+
+const app = express();
+
+
+const ClothingType = sequelize.define('ClothingType', {
+    // Model attributes are defined here
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
+}, {
+    sequelize, 
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'clothing_type', 
 });
 
-// Define the available categories and sub-categories
-const categories = ['Tops', 'Bottoms', 'Shoes'];
-const subCategories = {
-  Tops: ['Shirts', 'Jackets', 'Vests', 'Dresses'],
-  Bottoms: ['Pants', 'Shorts', 'Skirts', 'Leggings'],
-  Shoes: ['Shoes', 'Flip-flops']
-};
 
-// Create the Clothing table in the database
-Clothing.sync({ force: false })
-  .then(() => {
-    console.log('Clothing table created successfully.');
-  })
-  .catch((err) => {
-    console.error('Error creating Clothing table:', err);
-  });
+const Shirt = sequelize.define('Shirt', {
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    color: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
 
-// Export the Clothing model
-module.exports = Clothing;
+    clothing_type_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'clothing_type',
+            key: 'id'
+        }
+    }
+}, {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'shirt',
+});
+
+const Pants = sequelize.define('Pants', {
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    color: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    clothing_type_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'clothing_type',
+            key: 'id'
+        }
+    }
+}, {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'pants',
+});
+
+const footWear = sequelize.define('FootWear', {
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    color: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    clothing_type_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'clothing_type',
+            key: 'id'
+        }
+    }
+}, {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'foot_wear',
+});
+
+module.exports = { ClothingType, Shirt, Pants, footWear };
