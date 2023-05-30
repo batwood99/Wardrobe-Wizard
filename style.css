@@ -1,0 +1,94 @@
+.navbar {
+    background-color: #878ECD;
+    padding: 10px;
+    justify-content: space-around;
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-family: 'Cherry Bomb One', cursive;
+    color: #DDE7F2;
+}
+
+.login-form {
+    width: 95vw;
+    margin: auto;
+}
+
+.btn {
+    background-color: #878ECD;
+    color: #fff;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    height: 45px;
+}
+
+.btn-primary {
+    border: none;
+}
+
+.btn-primary:focus {
+    border: none;
+}
+
+.nav-btns {
+    justify-content: space-around;
+}
+
+.landing-page {
+    padding: 10px;
+}
+
+.short-memo {
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.square-btns-space {
+    height: auto;
+}
+
+.btn-group {
+    width: 100%;
+}
+
+.col-4 {
+    width: 100%;
+}
+
+.list-group-item.list-group-item-action {
+    color: cadetblue;
+}
+
+.list-group-item.list-group-item-action.active {
+    background-color: #DDE7F2;
+    color: black;
+    border: none;
+
+}
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid-item {
+    width: 25%;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.item-icon {
+    width: 100%;
+    height: 80px;
+    background-color: #f2f2f2;
+    box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.75);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.item-icon:focus {
+    background-color: #B9BBDF;
+    border: none;
+}

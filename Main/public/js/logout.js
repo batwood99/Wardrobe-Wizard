@@ -5,9 +5,10 @@ const logout = async () => {
   });
 
   if (response.ok) {
+    // If successful, redirect the browser to the home page
     document.location.replace('/');
   } else {
-    alert(response.statusText);
+    alert('Failed to log out. Please try again.');
   }
 };
 
