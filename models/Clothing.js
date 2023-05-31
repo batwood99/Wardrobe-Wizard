@@ -15,6 +15,11 @@ Clothing.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    type_ID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+    },
     color: {
       type: DataTypes.STRING,
       allowNull: false,
