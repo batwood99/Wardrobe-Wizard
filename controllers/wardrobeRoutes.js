@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 });
 
 // Update last_worn route
-router.post('/update-last-worn', withAuth, async (req, res) => {
+router.post('/update-last-worn', async (req, res) => {
   try {
     // Extract the clothing item ID from the request body
     const { clothingItemId } = req.body;
