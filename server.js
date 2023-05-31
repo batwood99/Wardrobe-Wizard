@@ -3,13 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers/wardrobeRoutes');
-const apiRoutes = require('./controllers/apiRoutes');
-const homeRoutes = require('./controllers/homeRoutes');
-const userRoutes = require('./controllers/api/userRoutes');
-const wardrobeRoutes = require('./controllers/wardrobeRoutes');
-const helpers = require('./utils/helpers');
 const { Clothing } = require('./models');
-
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
@@ -18,7 +12,6 @@ const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({
-  helpers,
   extname: '.handlebars',
   layoutsDir: path.join(__dirname, 'views'),
   partialsDir: path.join(__dirname, 'views', 'partials'),
