@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
-const routes = require('./controllers/wardrobeRoutes');
+const routes = require('./controllers');
 const { Clothing } = require('./models');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -47,10 +47,8 @@ const homeRoutes = require('./controllers/homeRoutes');
 const wardrobeRoutes = require('./controllers/wardrobeRoutes');
 
 // Use routes
-app.use('/', homeRoutes);
-app.use('/api', apiRoutes);
-app.use('/api/users', userRoutes);
-app.use('/wardrobe', wardrobeRoutes);
+app.use(routes);
+
 
 app.get('/', (req, res) => {
   res.render('index', { title: 'Wardrobe Wizard' });
