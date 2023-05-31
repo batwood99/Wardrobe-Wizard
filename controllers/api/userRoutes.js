@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.status(200).json(userData);
+      res.status(204).json(userData);
     });
   } catch (err) {
     res.status(400).json(err);
@@ -40,7 +40,7 @@ router.post('/login', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.redirect('/landing'); // Update the redirect URL to /landing
+      res.status(200).json(userData);
     });
   } catch (err) {
     res.status(400).json(err);
