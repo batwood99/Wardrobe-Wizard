@@ -1,20 +1,21 @@
-const { sequelize } = require('../models/User.js');
-const clothingData = require('./clothingSeed.js');
-const userData = require('./userSeed.js');
+const createClothing = require('./clothingSeed.js');
+const seedUsers = require('./userSeed.js');
+
+const sequelize = require('../config/connection.js');
+
 
 const seedAll = async () => {
-  try {
-    await sequelize.sync({ force: true });
-    console.log('\n----- DATABASE SYNCED -----\n');
-    await userData();
-    console.log('\n----- USERS SEEDED -----\n');
-    await clothingData();
-    console.log('\n----- CLOTHING SEEDED -----\n');
-    process.exit(0);
-  } catch (err) {
-    console.log(err);
-    process.exit(1);
-  }
+  await sequelize.sync({ force: true });
+  console.log('\n----- DATABASE SYNCED -----\n');
+  await seedUsers();
+  console.log('\n----- USERS SEEDED -----\n');
+  await createClothing();
+  console.log('\n----- CLOTHING SEEDED -----\n');
+  process.exit(0);
 };
+
+console.log('hello world')
+
+seedAll();
 
 module.exports = seedAll;
