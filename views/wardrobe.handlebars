@@ -17,9 +17,9 @@
   <div class="container mt-4">
     <h1>My Closet</h1>
     <a href="/wardrobe/add" class="btn btn-primary mb-3">Add Clothing Item</a>
-{{#if clothingItems}}
+{{#if Clothing}}
 <ul>
-  {{#each clothingItems}}
+  {{#each Clothing}}
   <li>
     {{this.name}}
     {{#if this.last_worn}}
