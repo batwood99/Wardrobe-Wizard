@@ -33,15 +33,6 @@ const userData = [
       "password": "password6"
     }
   ];
+const seedUsers = () => User.bulkCreate(userData);
 
-try {
-  const createdUsers = await User.bulkCreate(userData, {
-    individualHooks: true,
-    returning: true,
-  });
-  console.log('Users created', createdUsers);
-} catch (err) {
-  console.log('Error creating users', err);
-}
-
-module.exports = createUsers;
+module.exports = seedUsers;
