@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const apiRoutes = require('./apiRoutes');
 const homeRoutes = require('./homeRoutes');
+const { Clothing } = require('../models'); // Import the Clothing model
 
 router.use('/api', apiRoutes);
 router.use('/', homeRoutes);
@@ -18,7 +19,7 @@ router.post('/update-last-worn', async (req, res) => {
     const { clothingItemId } = req.body;
 
     // Find the clothing item in the database
-    const clothingItem = await Clothing.findOne({ where: { id: clothingItemId, userId: req.session.user_id } });
+    const clothingItem = await Clothing.findOne({ where: { id: clothingItemId, user_id: req.session.user_id } });
 
     if (clothingItem) {
       // Update the last_worn date to today's date
