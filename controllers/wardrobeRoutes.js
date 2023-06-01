@@ -1,29 +1,66 @@
+const express = require('express');
+const { Clothing, User } = require('../models');
 
+const router = express.Router();
 
+// Route to display the wardrobe page
+router.get('/wardrobe', async (req, res) => {
+  try {
+    // Fetch the logged-in user's wardrobe with associated clothing items
+    const user = await User.findByPk(req.session.user_id, {
+      include: { model: Clothing },
+    });
 
+    // Render the wardrobe page with the user's wardrobe data
+    res.render('wardrobe', { user });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
 
+// Route to add a clothing item to the user's wardrobe
+router.post('/wardrobe/add', async (req, res) => {
+  try {
+    const { type, color, last_worn, description } = req.body;
+    const user_id = req.session.user_id;
 
+    // Create a new clothing item in the database
+    await Clothing.create({
+      type,
+      color,
+      last_worn,
+      description,
+      user_id,
+    });
 
-router.post('/update-last-worn', async (req, res) => {
-    try {
-      // Extract the clothing item ID from the request body
-      const { clothingItemId } = req.body;
-  
-      // Find the clothing item in the database
-      const clothingItem = await Clothing.findOne({ where: { id: clothingItemId, user_id: req.session.user_id } });
-  
-      if (clothingItem) {
-        // Update the last_worn date to today's date
-        clothingItem.last_worn = moment().format('YYYY-MM-DD');
-        await clothingItem.save();
-  
-        res.sendStatus(200);
-      } else {
-        res.status(404).json({ error: 'Clothing item not found' });
-      }
-    } catch (err) {
-      console.error('Error updating last_worn:', err);
-      res.status(500).json({ error: 'Failed to update last_worn' });
-    }
-  });
-  
+    // Redirect the user back to the wardrobe page
+    res.redirect('/wardrobe');
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+// Route to delete a clothing item from the user's wardrobe
+router.post('/wardrobe/delete/:id', async (req, res) => {
+  try {
+    const clothingId = req.params.id;
+
+    // Delete the clothing item from the database
+    await Clothing.destroy({
+      where: {
+        id: clothingId,
+        user_id: req.session.user_id,
+      },
+    });
+
+    // Redirect the user back to the wardrobe page
+    res.redirect('/wardrobe');
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+module.exports = router;

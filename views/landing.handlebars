@@ -16,10 +16,10 @@
 
   <div class="container mt-4">
     <h1>Welcome to Wardrobe Wizard!</h1>
-{{#if clothingItems}}
+{{#if Clothing}}
 <form action="/reset-timer" method="POST">
   <h2>Select your outfit:</h2>
-  {{#each clothingItems}}
+  {{#each Clothing}}
   <div class="form-check">
     <input class="form-check-input" type="checkbox" name="outfitItems" id="outfitItem{{@index}}" value="{{this.id}}">
     <label class="form-check-label" for="outfitItem{{@index}}">{{this.name}}</label>
