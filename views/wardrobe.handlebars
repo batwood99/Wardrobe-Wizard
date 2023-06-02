@@ -39,19 +39,36 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       <form id="addClothingForm">
-        <label for="clothingType">Clothing Type:</label>
-        <select id="clothingType" required>
+        <label for="type">Clothing Type:</label>
+        <!-- Clothing Type dropdown -->
+        <select id="type" required>
           <option value="" disabled selected>Select a type</option>
           <option value="Shirt">Shirt</option>
           <option value="Pants">Pants</option>
           <option value="Footwear">Footwear</option>
         </select>
         <br>
-        <label for="clothingColor">Clothing Color:</label>
-        <input type="text" id="clothingColor" required>
+        <label for="color">Clothing Color:</label>
+        <!-- Clothing Color dropdown -->
+        <select id="color" required>
+          <option value="" disabled selected>Select a color</option>
+          <option value="red">Red</option>
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+          <option value="yellow">Yellow</option>
+          <option value="purple">Purple</option>
+          <option value="pink">Pink</option>
+          <option value="orange">Orange</option>
+          <option value="brown">Brown</option>
+          <option value="black">Black</option>
+          <option value="white">White</option>
+          <option value="gray">Gray</option>
+          <option value="gold">Gold</option>
+          <option value="silver">Silver</option>
+        </select>
         <br>
-        <label for="clothingDescription">Clothing Description:</label>
-        <input type="text" id="clothingDescription" required>
+        <label for="description">Clothing Description:</label>
+        <input type="text" id="description" required>
         <br>
         <button type="submit">Add Item</button>
       </form>
