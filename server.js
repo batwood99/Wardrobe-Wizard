@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
-const routes = require('./controllers');
+// const routes = require('./controllers');
 const { Clothing } = require('./models');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -13,9 +13,6 @@ const PORT = process.env.PORT || 3001;
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({
   extname: '.handlebars',
-  layoutsDir: path.join(__dirname, 'views'),
-  partialsDir: path.join(__dirname, 'views', 'partials'),
-  defaultLayout: 'index'
 });
 
 const sess = {
@@ -41,17 +38,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Import routes
-const apiRoutes = require('./controllers/apiRoutes');
-const userRoutes = require('./controllers/api/userRoutes');
-const homeRoutes = require('./controllers/homeRoutes');
-const wardrobeRoutes = require('./controllers/wardrobeRoutes');
+// const apiRoutes = require('./controllers/apiRoutes');
+// const userRoutes = require('./controllers/api/userRoutes');
+// const homeRoutes = require('./controllers/homeRoutes');
+// const wardrobeRoutes = require('./controllers/wardrobeRoutes');
 
-// Use routes
-app.use(routes);
+// // Use routes
+// app.use(routes);
 
 
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Wardrobe Wizard' });
+  res.render('login', { title: 'Wardrobe Wizard' });
 });
 
 // Reset timer route
