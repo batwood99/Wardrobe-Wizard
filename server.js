@@ -40,35 +40,14 @@ app.get('/', (req, res) => {
   res.render('login', { title: 'Wardrobe Wizard' });
 });
 
-// Reset timer route
-app.post('/reset-timer', async (req, res) => {
-  try {
-    await Clothing.update({ last_worn: new Date() }, { where: {} });
-    res.redirect('/landing');
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-app.get('/wardrobe/add', (req, res) => {
-  res.render('add-clothing');
-});
-
-app.post('/wardrobe/create', async (req, res) => {
-  try {
-    const { name, last_worn } = req.body;
-    await Clothing.create({ name, last_worn });
-    res.redirect('/wardrobe');
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
 
 // Include wardrobeRoutes
 const wardrobeRoutes = require('./controllers/wardrobeRoutes');
 app.use('/wardrobe', wardrobeRoutes);
+
+// Include landingRoutes
+const landingRoutes = require('./controllers/landingRoutes');
+app.use('/landing', landingRoutes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening on port', PORT));
