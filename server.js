@@ -2,7 +2,6 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
-// const routes = require('./controllers');
 const { Clothing } = require('./models');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -37,44 +36,33 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Import routes
-// const apiRoutes = require('./controllers/apiRoutes');
-// const userRoutes = require('./controllers/api/userRoutes');
-// const homeRoutes = require('./controllers/homeRoutes');
-// const wardrobeRoutes = require('./controllers/wardrobeRoutes');
-
-// // Use routes
-// app.use(routes);
-
-
 app.get('/', (req, res) => {
   res.render('login', { title: 'Wardrobe Wizard' });
 });
 
-// Reset timer route
-app.post('/reset-timer', async (req, res) => {
-  try {
-    await Clothing.update({ last_worn: new Date() }, { where: {} });
-    res.redirect('/landing');
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+// Include wardrobeRoutes
+const wardrobeRoutes = require('./controllers/wardrobeRoutes');
+app.use('/wardrobe', wardrobeRoutes);
 
-app.get('/wardrobe/add', (req, res) => {
-  res.render('add-clothing');
-});
+// Include landingRoutes
+const landingRoutes = require('./controllers/landingRoutes');
+app.use('/landing', landingRoutes);
 
-app.post('/wardrobe/create', async (req, res) => {
-  try {
-    const { name, last_worn } = req.body;
-    await Clothing.create({ name, last_worn });
-    res.redirect('/wardrobe');
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+// Add route to handle adding a clothing item
+app.post('/api/clothing', (req, res) => {
+  Clothing.create({
+    type: req.body.type,
+    color: req.body.color,
+    description: req.body.description,
+    user_id: req.session.user_id // Assuming you have the user ID stored in the session
+  })
+    .then((newClothing) => {
+      res.status(200).json(newClothing);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 sequelize.sync({ force: false }).then(() => {

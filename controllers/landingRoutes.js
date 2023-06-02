@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     });
 
     // Render the wardrobe page with the user's wardrobe data
-    res.render('wardrobe', { user });
+    res.render('landing', { user });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: 'Internal server error' });
