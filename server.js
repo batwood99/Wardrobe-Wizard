@@ -2,7 +2,6 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
-// const routes = require('./controllers');
 const { Clothing } = require('./models');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -37,16 +36,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Import routes
-// const apiRoutes = require('./controllers/apiRoutes');
-// const userRoutes = require('./controllers/api/userRoutes');
-// const homeRoutes = require('./controllers/homeRoutes');
-// const wardrobeRoutes = require('./controllers/wardrobeRoutes');
-
-// // Use routes
-// app.use(routes);
-
-
 app.get('/', (req, res) => {
   res.render('login', { title: 'Wardrobe Wizard' });
 });
@@ -76,6 +65,10 @@ app.post('/wardrobe/create', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// Include wardrobeRoutes
+const wardrobeRoutes = require('./controllers/wardrobeRoutes');
+app.use('/wardrobe', wardrobeRoutes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening on port', PORT));
