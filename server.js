@@ -40,6 +40,9 @@ app.get('/', (req, res) => {
   res.render('login', { title: 'Wardrobe Wizard' });
 });
 
+// const userRoutes = require('./controllers/userRoutes');
+// app.use('/user', userRoutes);
+
 // Include wardrobeRoutes
 const wardrobeRoutes = require('./controllers/wardrobeRoutes');
 app.use('/wardrobe', wardrobeRoutes);
