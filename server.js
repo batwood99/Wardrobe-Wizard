@@ -40,7 +40,6 @@ app.get('/', (req, res) => {
   res.render('login', { title: 'Wardrobe Wizard' });
 });
 
-
 // Include wardrobeRoutes
 const wardrobeRoutes = require('./controllers/wardrobeRoutes');
 app.use('/wardrobe', wardrobeRoutes);
@@ -52,6 +51,7 @@ app.use('/landing', landingRoutes);
 // Include clothingRoutes
 const clothingRoutes = require('./controllers/api/clothingRoutes');
 app.use('/api/clothing', clothingRoutes);
+
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening on port', PORT));
