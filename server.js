@@ -40,8 +40,8 @@ app.get('/', (req, res) => {
   res.render('login', { title: 'Wardrobe Wizard' });
 });
 
-// const userRoutes = require('./controllers/userRoutes');
-// app.use('/user', userRoutes);
+const userRoutes = require('./controllers/api/userRoutes');
+app.use('/api/users', userRoutes);
 
 // Include wardrobeRoutes
 const wardrobeRoutes = require('./controllers/wardrobeRoutes');

@@ -1,3 +1,5 @@
+const { loginUser, signupUser } = require('../../utils/auth');
+
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -6,17 +8,13 @@ const loginFormHandler = async (event) => {
   const password = document.querySelector('#password-login').value.trim();
 
   if (email && password) {
-    // Send a POST request to the API endpoint
-    const response = await fetch('/api/users/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+    try {
+      // Call the loginUser function from auth.js
+      await loginUser(email, password);
 
-    if (response.ok) {
       // If successful, redirect the browser to the landing page
       document.location.replace('/landing');
-    } else {
+    } catch (error) {
       alert('Failed to log in. Please check your credentials and try again.');
     }
   }
@@ -30,16 +28,13 @@ const signupFormHandler = async (event) => {
   const password = document.querySelector('#password-signup').value.trim();
 
   if (name && email && password) {
-    const response = await fetch('/api/users', {
-      method: 'POST',
-      body: JSON.stringify({ name, email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+    try {
+      // Call the signupUser function from auth.js
+      await signupUser(name, email, password);
 
-    if (response.ok) {
       // If successful, redirect the browser to the landing page
       document.location.replace('/landing');
-    } else {
+    } catch (error) {
       alert('Failed to sign up. Please try again.');
     }
   }

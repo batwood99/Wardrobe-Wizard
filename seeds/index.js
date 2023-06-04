@@ -1,7 +1,7 @@
-const createClothing = require('./clothingSeed.js');
-const seedUsers = require('./userSeed.js');
+const createClothing = require('./clothingSeed');
+const seedUsers = require('./userSeed');
 
-const sequelize = require('../config/connection.js');
+const sequelize = require('../config/connection');
 
 const seedAll = async () => {
   try {
