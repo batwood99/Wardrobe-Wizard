@@ -33,6 +33,13 @@ const userData = [
   },
 ];
 
-const seedUsers = () => User.bulkCreate(userData, {individualHooks: true});
+const seedUsers = async () => {
+  for (const user of userData) {
+    await User.findOrCreate({
+      where: { email: user.email },
+      defaults: user,
+    });
+  }
+};
 
 module.exports = seedUsers;

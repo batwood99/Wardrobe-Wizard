@@ -55,7 +55,28 @@ app.use('/landing', landingRoutes);
 const clothingRoutes = require('./controllers/api/clothingRoutes');
 app.use('/api/clothing', clothingRoutes);
 
+// Import the seed functions
+const seedUsers = require('./seeds/userSeed');
+const createClothing = require('./seeds/clothingSeed');
 
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening on port', PORT));
-});
+// Move the server startup code to a separate function
+const startServer = async () => {
+  try {
+    // Sync the models with the database
+    await sequelize.sync({ force: false });
+
+    // Seed the user data
+    await seedUsers();
+
+    // Seed the clothing data
+    await createClothing();
+
+    // Start the server
+    app.listen(PORT, () => console.log('Now listening on port', PORT));
+  } catch (err) {
+    console.error('Error starting server:', err);
+  }
+};
+
+// Call the startServer function to start the server and seed the data
+startServer();
