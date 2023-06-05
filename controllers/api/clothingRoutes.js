@@ -3,6 +3,20 @@ const express = require('express');
 const router = express.Router();
 const Clothing = require('../../models/Clothing');
 
+router.get('/', async (req, res) => { 
+  try {
+    // Get all clothing items from the database for that user
+    const clothingData = await Clothing.findAll();
+
+    // Return a success response to the client with the clothing items
+    res.status(200).json(clothingData);
+  } catch (error) {
+    // Return an error response to the client
+    res.status(500).json({ error: 'Failed to get clothing items.' });
+  }
+});
+
+
 // POST route to add a new clothing item
 router.post('/', async (req, res) => {
   try {
