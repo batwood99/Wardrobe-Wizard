@@ -8,13 +8,13 @@ router.get('/', async (req, res) => {
   try {
     // Fetch the logged-in user's wardrobe with associated clothing items
     const user = await User.findByPk(req.session.user_id, {
-      include: { model: Clothing },
+      include: Clothing,
     });
 
     // Render the wardrobe page with the user's wardrobe data
     res.render('wardrobe', { user });
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ message: 'Internal server error' });
   }
 });

@@ -16,22 +16,23 @@
   <div class="container mt-4">
     <h1>My Closet</h1>
     <a class="btn btn-primary mb-3" id="addClothingButton">Add Clothing Item</a>
-    {{#if Clothing}}
-    <ul>
-      {{#each Clothing}}
-      <li>
-        {{this.name}}
-        {{#if this.last_worn}}
-        <span class="last-worn">Last worn: {{this.last_worn}}</span>
-        {{else}}
-        <span class="last-worn">Not worn yet</span>
-        {{/if}}
-      </li>
-      {{/each}}
-    </ul>
+{{#if user.Clothing}}
+<ul>
+  {{#each user.Clothing}}
+  <li>
+    {{this.name}}
+    {{#if this.last_worn}}
+    <span class="last-worn">Last worn: {{this.last_worn}}</span>
     {{else}}
-    <p>No clothing items found in your closet.</p>
+    <span class="last-worn">Not worn yet</span>
     {{/if}}
+  </li>
+  {{/each}}
+</ul>
+{{else}}
+<p>No clothing items found in your closet.</p>
+{{/if}}
+
   </div>
 
   <!-- Add Clothing Item Modal -->
