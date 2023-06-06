@@ -44,8 +44,9 @@ router.delete('/:itemId', async (req, res) => {
 });
 
 // POST route to update the last_worn date for selected clothing items
-router.post('/update-last-worn/:id', async (req, res) => {
+router.post('/update-last-worn', async (req, res) => {
   const clothingId = parseInt(req.params.id, 10)
+  console.log(req.params.id);
 console.log('clothingId:', clothingId);
   Clothing.update(
     {
@@ -53,7 +54,7 @@ console.log('clothingId:', clothingId);
     },
     {
       where: {
-        // id: clothingId,
+        id: clothingId,
         user_id: req.session.user_id,
       },
     }

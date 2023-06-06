@@ -1,7 +1,12 @@
 <div class='container mt-4'>
   <h1>Welcome to Wardrobe Wizard!</h1>
   {{#if user.clothings}}
-    <form action='/api/clothing/update-last-worn' method='POST' class='mt-4'>
+    <form
+      action='/api/clothing/update-last-worn'
+      method='POST'
+      class='mt-4'
+      id='update-last-worn'
+    >
 
       <h2>Select your outfit:</h2>
       <div class='row'>
@@ -36,3 +41,4 @@
   integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM'
   crossorigin='anonymous'
 ></script>
+<script src="js/updateclothing.js"></script>
