@@ -1,21 +1,32 @@
-<div class="container mt-4">
-    <h1>Welcome to Wardrobe Wizard!</h1>
-{{#if Clothing}}
-<form action="/reset-timer" method="POST">
-  <h2>Select your outfit:</h2>
-  {{#each Clothing}}
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" name="outfitItems" id="outfitItem{{@index}}" value="{{this.id}}">
-    <label class="form-check-label" for="outfitItem{{@index}}">{{this.name}}</label>
-  </div>
-  {{/each}}
-  <button type="submit" class="btn btn-primary mt-3">Submit</button>
-</form>
-{{else}}
-<p>No clothing items found in your closet.</p>
-{{/if}}
-  </div>
+<div class='container mt-4'>
+  <h1>Welcome to Wardrobe Wizard!</h1>
+  {{#if clothings}}
+    <form action='/reset-timer' method='POST'>
+      <h2>Select your outfit:</h2>
+      {{#each clothings}}
+        <div class='form-check'>
+          <input
+            class='form-check-input'
+            type='checkbox'
+            name='outfitItems'
+            id='outfitItem{{@index}}'
+            value='{{this.id}}'
+          />
+          <label
+            class='form-check-label'
+            for='outfitItem{{@index}}'
+          >{{this.name}}</label>
+        </div>
+      {{/each}}
+      <button type='submit' class='btn btn-primary mt-3'>Submit</button>
+    </form>
+  {{else}}
+    <p>No clothing items found in your closet.</p>
+  {{/if}}
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+<script
+  src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'
+  integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM'
+  crossorigin='anonymous'
+></script>

@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const Clothing = require('../../models/Clothing');
 
+
+
 // POST route to add a new clothing item
 router.post('/', async (req, res) => {
   try {
