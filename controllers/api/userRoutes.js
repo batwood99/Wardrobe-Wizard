@@ -50,9 +50,11 @@ router.post('/login', async (req, res) => {
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
-      res.status(204).end();
+      console.log('session destroyed');
+      res.redirect('/');
     });
   } else {
+    console.log('no session to destroy');
     res.status(404).end();
   }
 });

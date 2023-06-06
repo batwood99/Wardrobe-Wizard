@@ -54,6 +54,7 @@ app.use('/landing', landingRoutes);
 const clothingRoutes = require('./controllers/api/clothingRoutes');
 app.use('/api/clothing', clothingRoutes);
 
+
 // Import the seed functions
 const seedUsers = require('./seeds/userSeed');
 const createClothing = require('./seeds/clothingSeed');

@@ -13,7 +13,8 @@ router.get('/', withAuth, async (req, res) => {
     });
     const user = userData.get({ plain: true });
     // console.log(user);
-
+    user.loggedIn = req.session.logged_in;
+console.log(user.loggedIn = req.session.logged_in)
     // Render the wardrobe page with the user's wardrobe data
     res.render('landing', { user });
   } catch (err) {
