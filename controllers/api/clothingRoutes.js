@@ -68,5 +68,4 @@ router.post('/update-last-worn', async (req, res) => {
   }
 });
 
-
 module.exports = router;
