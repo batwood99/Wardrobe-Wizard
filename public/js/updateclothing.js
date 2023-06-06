@@ -6,21 +6,20 @@ updateLastWornForm.addEventListener('submit', async (event) => {
   const outfitItems = document.querySelectorAll('input[name="outfitItems"]:checked');
   const clothingIds = Array.from(outfitItems).map((item) => parseInt(item.value));
 
-  const response = await fetch('/api/clothing/update-last-worn', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ids: clothingIds }),
-  });
+  try {
+    const response = await axios.post('/api/clothing/update-last-worn', { ids: clothingIds });
 
-  if (response.ok) {
-    const updatedClothingItems = await response.json();
-    console.log(updatedClothingItems);
-    // Update UI to reflect updated items
-  } else {
-    const errorResponse = await response.json();
-    console.log(errorResponse.message);
-    // Display error message to user
+    if (response.status === 200) {
+      const updatedClothingItems = response.data;
+      console.log(updatedClothingItems);
+      // Update UI to reflect updated items
+    }
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+      // Display error message to user
+    } else {
+      console.log('Something went wrong:', error.message);
+    }
   }
 });
-
-

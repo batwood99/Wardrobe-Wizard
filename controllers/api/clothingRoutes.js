@@ -43,34 +43,30 @@ router.delete('/:itemId', async (req, res) => {
   }
 });
 
-// POST route to update the last_worn date for selected clothing items
 router.post('/update-last-worn', async (req, res) => {
-  const clothingId = parseInt(req.params.id, 10)
-  console.log(req.params.id);
-console.log('clothingId:', clothingId);
-  Clothing.update(
-    {
-      last_worn: new Date(),
-    },
-    {
-      where: {
-        id: clothingId,
-        user_id: req.session.user_id,
-      },
-    }
-  )
-    .then((dbClothingData) => {
-      console.log('dbClothingData:', dbClothingData);
-      if (!dbClothingData[0]) {
-        res.status(404).json({ message: 'No clothing items found to update.' });
-        return;
+  const clothingIds = req.body.ids; // Get the clothing item IDs from the request body
+
+  try {
+    const updatedClothingItems = await Clothing.update(
+      { last_worn: new Date() }, // Update the last_worn field to today's date
+      {
+        where: {
+          id: clothingIds,
+          user_id: req.session.user_id,
+        },
       }
-      res.json(dbClothingData);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+    );
+
+    if (updatedClothingItems[0] === 0) {
+      res.status(404).json({ message: 'No clothing items found to update.' });
+    } else {
+      res.json(updatedClothingItems);
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
 });
+
 
 module.exports = router;
