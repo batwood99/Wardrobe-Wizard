@@ -1,6 +1,6 @@
 // Add event listener for delete buttons
 const deleteButtons = document.querySelectorAll('.delete-btn');
-deleteButtons.forEach(button => {
+deleteButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const itemId = button.dataset.id;
 
@@ -8,7 +8,7 @@ deleteButtons.forEach(button => {
     fetch(`/api/clothing/${itemId}`, {
       method: 'DELETE',
     })
-      .then(response => {
+      .then((response) => {
         if (response.ok) {
           // Item deleted successfully
           console.log('Clothing item deleted successfully!');
@@ -19,7 +19,7 @@ deleteButtons.forEach(button => {
           console.log('Error deleting clothing item.');
         }
       })
-      .catch(error => {
+      .catch((error) => {
         // Error occurred while making the request
         console.log('Error deleting clothing item:', error);
       });

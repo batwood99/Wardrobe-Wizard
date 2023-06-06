@@ -99,7 +99,7 @@ const clothingData = [
   },
 ];
 
-
-const createClothing = () => Clothing.bulkCreate(clothingData, {individualHooks: true});
+const createClothing = () =>
+  Clothing.bulkCreate(clothingData, { individualHooks: true });
 
 module.exports = createClothing;
