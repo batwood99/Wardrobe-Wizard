@@ -4,25 +4,20 @@ const router = express.Router();
 const Clothing = require('../../models/Clothing');
 
 // POST route to add a new clothing item
-router.post('/', async (req, res) => {
-  try {
-    // Extract the data from req.body
-    const { type, color, description } = req.body;
-
-    // Save the new clothing item to the database
-    const newClothing = await Clothing.create({
-      type,
-      color,
-      description,
-      user_id: req.session.user_id, // Associate the clothing item with the user
+router.post('/clothing', (req, res) => {
+  Clothing.create({
+    type: req.body.type,
+    type_ID: req.body.type_ID,
+    color: req.body.color,
+    last_worn: req.body.last_worn,
+    description: req.body.description,
+    user_id: req.body.user_id,
+  })
+    .then((dbClothingData) => res.json(dbClothingData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
     });
-
-    // Return a success response to the client
-    res.status(201).json({ message: 'Clothing item added successfully!', clothing: newClothing });
-  } catch (error) {
-    // Return an error response to the client
-    res.status(500).json({ error: 'Failed to add the clothing item.' });
-  }
 });
 
 // DELETE route to delete a clothing item
@@ -31,7 +26,9 @@ router.delete('/:itemId', async (req, res) => {
     const itemId = req.params.itemId;
 
     // Delete the clothing item from the database
-    const deletedItem = await Clothing.destroy({ where: { id: itemId, user_id: req.session.user_id } });
+    const deletedItem = await Clothing.destroy({
+      where: { id: itemId, user_id: req.session.user_id },
+    });
 
     if (deletedItem) {
       // Return a success response to the client
@@ -48,24 +45,27 @@ router.delete('/:itemId', async (req, res) => {
 
 // POST route to update the last_worn date for selected clothing items
 router.post('/update-last-worn', async (req, res) => {
-  try {
-    const { outfitItems } = req.body;
-
-    // Convert outfitItems to an array if it's a single value
-    const outfitIds = Array.isArray(outfitItems) ? outfitItems : [outfitItems];
-
-    // Update the last_worn date for each selected clothing item
-    await Clothing.update(
-      { last_worn: new Date() },
-      { where: { id: outfitIds, user_id: req.session.user_id } }
-    );
-
-    // Redirect the user to the landing page or display a success message
-    res.redirect('/landing');
-  } catch (error) {
-    // Return an error response to the client
-    res.status(500).json({ error: 'Failed to update the last_worn date.' });
-  }
+  Clothing.update(
+    {
+      last_worn: new Date(),
+    },
+    {
+      where: {
+        user_id: req.session.user_id,
+      },
+    }
+  )
+    .then((dbClothingData) => {
+      if (!dbClothingData) {
+        res.status(404).json({ message: 'No clothing found with this id' });
+        return;
+      }
+      res.json(dbClothingData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;

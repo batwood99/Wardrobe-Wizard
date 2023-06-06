@@ -37,13 +37,11 @@
             <li class='nav-item'>
               <a class='nav-link' href='/wardrobe'>Wardrobe</a>
             </li>
-            <li class='nav-item'>
-              <a
-                class='nav-link'
-                id='logout'
-                href='/api/users/logout'
-              >Logout</a>
-            </li>
+         <li class='nav-item'>
+  <form class='navlink' action="/api/users/logout" method="post">
+    <input type="submit" value="Logout" id="logout" class="nav-link" />
+  </form>
+</li>
           </ul>
         </div>
       </nav>
