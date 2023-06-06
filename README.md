@@ -20,6 +20,22 @@ __Backend:__ SQL, Handlebars, SVG, Express
 
 ## <a name="Features"></a>Features 🌟
 
+Register and Login
+
+![alt text](public/icons/wardrobe-wizard-login.png)
+
+Landing Page
+
+![alt text](public/icons/wardrobe-wizard-landing.png)
+
+My Closet
+
+![alt text](public/icons/wardrobe-wizard-wardrobe.png)
+
+Add Item
+
+![alt text](public/icons/wardrobe-wizard-description.png)
+
 ## <a name="about"></a>Developers 🧑‍💻
 
 This was created by Robert Atwood (Bobby), Trenton Ponder (Kai), Mike Tyspan, and Dennis Medrano for Group Project #2.
