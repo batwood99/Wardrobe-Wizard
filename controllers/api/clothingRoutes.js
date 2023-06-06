@@ -44,20 +44,24 @@ router.delete('/:itemId', async (req, res) => {
 });
 
 // POST route to update the last_worn date for selected clothing items
-router.post('/update-last-worn', async (req, res) => {
+router.post('/update-last-worn/:id', async (req, res) => {
+  const clothingId = parseInt(req.params.id, 10)
+console.log('clothingId:', clothingId);
   Clothing.update(
     {
       last_worn: new Date(),
     },
     {
       where: {
+        // id: clothingId,
         user_id: req.session.user_id,
       },
     }
   )
     .then((dbClothingData) => {
-      if (!dbClothingData) {
-        res.status(404).json({ message: 'No clothing found with this id' });
+      console.log('dbClothingData:', dbClothingData);
+      if (!dbClothingData[0]) {
+        res.status(404).json({ message: 'No clothing items found to update.' });
         return;
       }
       res.json(dbClothingData);
