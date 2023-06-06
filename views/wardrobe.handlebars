@@ -15,21 +15,40 @@
   </head>
 
   <body>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <ul class="navbar-nav mx-auto ">
+      <li class="nav-item">
+        <a class="nav-link" href="/landing">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/wardrobe">Wardrobe</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/api/users/logout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
     <div class='container mt-4'>
       <h1>My Closet</h1>
       <a class='btn btn-primary mb-3' id='addClothingButton'>Add Clothing Item</a>
       {{#if user.clothings}}
-        <ul>
+        <ul class="list-group">
           {{#each user.clothings as |clothing|}}
-            <li>
-              {{this.description}}
-              ({{this.color}} {{this.type}})
-              {{#if this.last_worn}}
-                <span class='last-worn'>Last worn: {{this.last_worn}}</span>
-              {{else}}
-                <span class='last-worn'>Not worn yet</span>
-              {{/if}}
+
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                {{clothing.description}}
+                ({{clothing.color}}
+                {{clothing.type}})
+                {{#if clothing.last_worn}}
+                  <span class='last-worn'> - Last worn: {{clothing.last_worn}}</span>
+                {{else}}
+                  <span class='last-worn'>Not worn yet</span>
+                {{/if}}
+              </div>
+              <button class="btn btn-danger btn-sm delete-btn" data-id="{{clothing.id}}">Delete</button>
             </li>
           {{/each}}
         </ul>
@@ -44,38 +63,41 @@
       <div class='modal-content'>
         <span class='close'>&times;</span>
         <form id='addClothingForm'>
-          <label for='type'>Clothing Type:</label>
-          <!-- Clothing Type dropdown -->
-          <select id='type' required>
-            <option value='' disabled selected>Select a type</option>
-            <option value='Shirt'>Shirt</option>
-            <option value='Pants'>Pants</option>
-            <option value='Footwear'>Footwear</option>
-          </select>
-          <br />
-          <label for='color'>Clothing Color:</label>
-          <!-- Clothing Color dropdown -->
-          <select id='color' required>
-            <option value='' disabled selected>Select a color</option>
-            <option value='red'>Red</option>
-            <option value='blue'>Blue</option>
-            <option value='green'>Green</option>
-            <option value='yellow'>Yellow</option>
-            <option value='purple'>Purple</option>
-            <option value='pink'>Pink</option>
-            <option value='orange'>Orange</option>
-            <option value='brown'>Brown</option>
-            <option value='black'>Black</option>
-            <option value='white'>White</option>
-            <option value='gray'>Gray</option>
-            <option value='gold'>Gold</option>
-            <option value='silver'>Silver</option>
-          </select>
-          <br />
-          <label for='description'>Clothing Description:</label>
-          <input type='text' id='description' required />
-          <br />
-          <button type='submit'>Add Item</button>
+          <div class="mb-3">
+            <label for='type' class="form-label">Clothing Type:</label>
+            <!-- Clothing Type dropdown -->
+            <select id='type' class="form-select" required>
+              <option value='' disabled selected>Select a type</option>
+              <option value='Shirt'>Shirt</option>
+              <option value='Pants'>Pants</option>
+              <option value='Footwear'>Footwear</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for='color' class="form-label">Clothing Color:</label>
+            <!-- Clothing Color dropdown -->
+            <select id='color' class="form-select" required>
+              <option value='' disabled selected>Select a color</option>
+              <option value='red'>Red</option>
+              <option value='blue'>Blue</option>
+              <option value='green'>Green</option>
+              <option value='yellow'>Yellow</option>
+              <option value='purple'>Purple</option>
+              <option value='pink'>Pink</option>
+              <option value='orange'>Orange</option>
+              <option value='brown'>Brown</option>
+              <option value='black'>Black</option>
+              <option value='white'>White</option>
+              <option value='gray'>Gray</option>
+              <option value='gold'>Gold</option>
+              <option value='silver'>Silver</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for='description' class="form-label">Clothing Description:</label>
+            <input type='text' id='description' class="form-control" required />
+          </div>
+          <button type='submit' class="btn btn-primary" id='addClothingButton'>Add Item</button>
         </form>
       </div>
     </div>

@@ -1,7 +1,7 @@
 // Wait for the DOM to be ready
 document.addEventListener('DOMContentLoaded', function () {
   // Get the button element
-  var addButton = document.querySelector('.btn.btn-primary');
+  var addButton = document.querySelector('#addClothingButton');
 
   // Add a click event listener to the button
   addButton.addEventListener('click', function () {

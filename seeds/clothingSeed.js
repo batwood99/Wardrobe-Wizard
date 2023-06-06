@@ -99,23 +99,12 @@ const clothingData = [
   },
 ];
 
-
 const createClothing = async () => {
   for (const item of clothingData) {
-    const [clothing, created] = await Clothing.findOrCreate({
-      where: {
-        type: item.type,
-        type_ID: item.type_ID,
-        color: item.color,
-        user_id: item.user_id,
-      },
-      defaults: item,
-    });
+    const existingItem = await Clothing.findOne({ where: { description: item.description } });
 
-    if (!created) {
-      console.log(`Clothing item already exists: ${clothing.type} - ${clothing.color}`);
-    } else {
-      console.log(`Created new clothing item: ${clothing.type} - ${clothing.color}`);
+    if (!existingItem) {
+      await Clothing.create(item);
     }
   }
 };
