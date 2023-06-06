@@ -13,7 +13,7 @@ router.get('/', withAuth, async (req, res) => {
       include: Clothing,
     });
     const user = userData.get({ plain: true });
-    console.log(user);
+    // console.log(user);
 
     // Render the wardrobe page with the user's wardrobe data
     res.render('wardrobe', { user });
