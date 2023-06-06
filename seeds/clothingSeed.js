@@ -99,7 +99,14 @@ const clothingData = [
   },
 ];
 
-const createClothing = () =>
-  Clothing.bulkCreate(clothingData, { individualHooks: true });
+const createClothing = async () => {
+  for (const item of clothingData) {
+    const existingItem = await Clothing.findOne({ where: { description: item.description } });
+
+    if (!existingItem) {
+      await Clothing.create(item);
+    }
+  }
+};
 
 module.exports = createClothing;
