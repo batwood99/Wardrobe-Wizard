@@ -1,7 +1,17 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Clothing extends Model {}
+class Clothing extends Model {
+  get last_worn() {
+    const date = this.getDataValue('last_worn');
+    if (date) {
+      const options = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
+      const formattedDate = new Date(date).toLocaleDateString('en-US', options);
+      return formattedDate;
+    }
+    return null;
+  }
+}
 
 Clothing.init(
   {
@@ -25,7 +35,16 @@ Clothing.init(
     },
     last_worn: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
+      get() {
+        const date = this.getDataValue('last_worn');
+        if (date) {
+          const options = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
+          const formattedDate = new Date(date).toLocaleDateString('en-US', options);
+          return formattedDate;
+        }
+        return null;
+      },
     },
     description: {
       type: DataTypes.STRING,

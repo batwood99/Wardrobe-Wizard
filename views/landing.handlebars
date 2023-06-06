@@ -17,7 +17,7 @@
 <div class="container mt-4">
   <h1>Welcome to Wardrobe Wizard!</h1>
   {{#if user.clothings}}
-    <form action="/submit-outfit" method="POST">
+    <form action="/api/clothing/update-last-worn" method="POST">
       <h2>Select your outfit:</h2>
       <div class="row">
         <div class="col-md-6">

@@ -38,16 +38,16 @@
           {{#each user.clothings as |clothing|}}
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div>
-                {{this.description}}
-                ({{this.color}}
-                {{this.type}})
-                {{#if this.last_worn}}
-                  <span class='last-worn'>Last worn: {{this.last_worn}}</span>
+                {{clothing.description}}
+                ({{clothing.color}}
+                {{clothing.type}})
+                {{#if clothing.last_worn}}
+                  <span class='last-worn'> - Last worn: {{clothing.last_worn}}</span>
                 {{else}}
                   <span class='last-worn'>Not worn yet</span>
                 {{/if}}
               </div>
-              <button class="btn btn-danger btn-sm delete-btn" data-id="{{this.id}}">Delete</button>
+              <button class="btn btn-danger btn-sm delete-btn" data-id="{{clothing.id}}">Delete</button>
             </li>
           {{/each}}
         </ul>
@@ -96,7 +96,7 @@
             <label for='description' class="form-label">Clothing Description:</label>
             <input type='text' id='description' class="form-control" required />
           </div>
-          <button type='submit' class="btn btn-primary">Add Item</button>
+          <button type='submit' class="btn btn-primary" id='addClothingButton'>Add Item</button>
         </form>
       </div>
     </div>
